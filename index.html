@@ -12,13 +12,19 @@
     </head>
     <body>
         <div id="app">
-            <p v-html="wizard + ' ' + 
+            <harry></harry>
+            <ron></ron>
+            <hermione></hermione>
+
+            <wizard :name="harry" :cast="oculus_reparo"></wizard>
+
+            <!-- <p v-html="wizard + ' ' + 
             (
                 wizard == harry ? hedwig :
                 wizard == ron ? scabbers :
                 wizard == hermione ? crookshanks : ''
-            )"></p>
-            <p v-for="wizard in wizards()" v-html="wizard.name + ' ' + wizard.pet"></p>
+            )"></p> -->
+            <!-- <p v-for="wizard in wizards()" v-html="wizard.name + ' ' + wizard.pet"></p> -->
         </div>
         <script src="js/main.js"></script>
     </body>

@@ -8,34 +8,41 @@ function emojify(name) {
 
 // cast returns a spell (function) that decorates the wizard
 function cast(emoji) {
-    if (!emoji) {
-        emoji = "¯\\_(ツ)_/¯";
-    }
+    var magic = emojify("magic");
 	return function (wizard) {
-		return emoji + wizard + emoji;
+		return wizard + " " + magic + " " + emoji + " " + magic;
 	};
 }
+// vue components
+Vue.component("harry", {
+    template: `<p>${emojify("harry")}</p>`
+});
+Vue.component("ron", {
+    template: `<p>${emojify("ron")}</p>`
+});
+Vue.component("hermione", {
+    template: `<p>${emojify("hermione")}</p>`
+});
+
+// vue components with props (properties)
+Vue.component("wizard", {
+    props: ["name", "cast"],
+    template: `<p v-html="cast(name)"><slot></slot></p>` //<slot></slot> to uderstand input between opening and closing component tag
+});
 
 var app = new Vue({
     el: "#app",
     data: {
-		wizard      : "",
 		harry       : emojify("harry"      ),
-		hedwig      : emojify("hedwig"     ),
 		ron         : emojify("ron"        ),
-		scabbers    : emojify("scabbers"   ),
-		hermione    : emojify("hermione"   ),
-		crookshanks : emojify("crookshanks")
+		hermione    : emojify("hermione"   )
 	},
     methods: {
-		wizards: function () {
-			return [
-				{ name: this.harry   , pet: this.hedwig      },
-				{ name: this.ron     , pet: this.scabbers    },
-				{ name: this.hermione, pet: this.crookshanks }
-			]
-		}
+		// oculus_reparo returns a spell (function) that repairs glasses		
+		oculus_reparo: cast(emojify("oculus-reparo")),		
+		// wingardium_leviosa returns a spell (function) that levitates an object
+		wingardium_leviosa: cast(emojify("wingardium-leviosa")),
+		// alohomora returns a spell (function) that unlocks a door
+		alohomora: cast(emojify("alohomora"))
 	}
 });
-
-app.wizard = app.hermione;
