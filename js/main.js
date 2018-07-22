@@ -19,10 +19,23 @@ function cast(emoji) {
 var app = new Vue({
     el: "#app",
     data: {
-        wizard: emojify("wizard")
-    },
+		wizard      : "",
+		harry       : emojify("harry"      ),
+		hedwig      : emojify("hedwig"     ),
+		ron         : emojify("ron"        ),
+		scabbers    : emojify("scabbers"   ),
+		hermione    : emojify("hermione"   ),
+		crookshanks : emojify("crookshanks")
+	},
     methods: {
-        lumos: cast(emojify('lumos')),
-        incendio: cast(emojify("incendio"))
-    }
+		wizards: function () {
+			return [
+				{ name: this.harry   , pet: this.hedwig      },
+				{ name: this.ron     , pet: this.scabbers    },
+				{ name: this.hermione, pet: this.crookshanks }
+			]
+		}
+	}
 });
+
+app.wizard = app.hermione;
