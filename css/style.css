@@ -23,11 +23,17 @@ img {
     vertical-align: calc(-0.12109375em);
 }
 
-.breathe--man { animation: breathe 4.0s infinite; }
-.breathe--dog { animation: breathe 0.5s infinite; }
-
-@keyframes breathe {
-	  0% { transform: scale(0.95); }
-	 50% { transform: scale(1.05); }
-	100% { transform: scale(0.95); }
+.jitter {
+	display: inline-block;
+	animation: jitter 0.33s infinite alternate;
 }
+
+@keyframes jitter {
+	  0% { transform: rotate( 0deg); }
+	 33% { transform: rotate( 3deg); }
+	 67% { transform: rotate(-3deg); }
+	100% { transform: rotate( 0deg); }
+}
+
+.theme--alive { color: var(--white); background: var(--green); }
+.theme--dead  { color: var(--red  ); background: var(--black); }
