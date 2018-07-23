@@ -11,20 +11,8 @@
         <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>                
     </head>
     <body>
-        <div id="app">
-            <harry></harry>
-            <ron></ron>
-            <hermione></hermione>
-
-            <wizard :name="harry" :cast="oculus_reparo"></wizard>
-
-            <!-- <p v-html="wizard + ' ' + 
-            (
-                wizard == harry ? hedwig :
-                wizard == ron ? scabbers :
-                wizard == hermione ? crookshanks : ''
-            )"></p> -->
-            <!-- <p v-for="wizard in wizards()" v-html="wizard.name + ' ' + wizard.pet"></p> -->
+        <div id="app" :style="{ background: background() }">
+            <p v-html="active" @click="animagus" :class="breathe()"></p>
         </div>
         <script src="js/main.js"></script>
     </body>
